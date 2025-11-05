@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Eng. Tawfiq Ahmed — Mechatronics Portfolio</title>
+  <style>
+    /* --------- Reset & Fonts --------- */
+    :root{
+      --bg:#05060a;
+      --panel:#0f1720;
+      --accent:#00f0ff;
+      --accent-2:#6c63ff;
+      --muted:#9aa7b2;
+      --glass: rgba(255,255,255,0.03);
+      --glass-2: rgba(255,255,255,0.02);
+      --radius:14px;
+      --fw-regular: 400;
+      --fw-medium: 600;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(108,99,255,0.06), transparent),
+                  linear-gradient(180deg, #020203 0%, var(--bg) 60%);
+      color:#e6f0f2;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Cairo', sans-serif;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding-bottom:60px;
+    }
+
+    /* container */
+    .wrap{max-width:1100px;margin:28px auto;padding:24px}
+
+    /* header */
+    header.hero{
+      display:flex;gap:18px;align-items:center;padding:28px;background:linear-gradient(90deg, rgba(0,240,255,0.04), rgba(108,99,255,0.03));border-radius:18px;backdrop-filter: blur(6px);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    /* avatar */
+    .avatar{
+      width:120px;height:120px;border-radius:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:linear-gradient(180deg,#071426 40%, #0b1b2b 100%);border:1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 6px 30px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+    .avatar svg{width:86px;height:86px}
+
+    .hero-content{flex:1}
+    .title{display:flex;align-items:center;gap:12px}
+    .title h1{margin:0;font-size:1.5rem}
+    .title .tag{background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:6px 10px;border-radius:8px;font-weight:600;color:#071426;font-size:0.85rem}
+    .subtitle{margin:6px 0;color:var(--muted)}
+
+    /* language + actions */
+    .actions{display:flex;gap:8px;align-items:center}
+    .lang-switch{display:flex;gap:8px}
+    .lang-btn{background:var(--glass);border:1px solid rgba(255,255,255,0.03);padding:8px 10px;border-radius:10px;cursor:pointer;color:var(--muted);font-weight:600}
+    .lang-btn.active{color:var(--bg);background:linear-gradient(90deg,var(--accent),var(--accent-2));}
+
+    /* layout sections */
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:22px;margin-top:22px}
+    main{background:linear-gradient(180deg,var(--glass),transparent);padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.03)}
+    aside{background:linear-gradient(180deg,var(--glass-2),transparent);padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.025)}
+
+    h2.section-title{margin:0 0 10px 0;color:var(--accent);font-size:1.05rem}
+
+    /* about */
+    .about p{color:var(--muted);margin:0 0 12px 0}
+    .contact-list{display:flex;flex-direction:column;gap:8px}
+    .chip{padding:8px 10px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02);color:var(--muted);font-weight:600}
+
+    /* skills */
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    .skill{background:linear-gradient(90deg, rgba(0,240,255,0.04), rgba(108,99,255,0.03));padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);min-width:140px}
+    .skill strong{display:block;color:var(--accent);font-size:0.95rem}
+    .skill small{color:var(--muted)}
+
+    /* projects */
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .card{background:#071022;border-radius:12px;padding:14px;border:1px solid rgba(255,255,255,0.03);box-shadow: 0 8px 30px rgba(12,18,26,0.6);transition:transform .18s ease, box-shadow .18s ease}
+    .card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(12,18,26,0.75)}
+    .card img{width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:10px}
+    .card h3{margin:6px 0 4px 0}
+    .card p{color:var(--muted);margin:0 0 8px 0}
+    .card .links{display:flex;gap:8px}
+    .btn{padding:8px 10px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--accent);text-decoration:none;font-weight:600}
+
+    /* articles */
+    .articles .post{padding:12px;border-radius:10px;background:rgba(255,255,255,0.02);margin-bottom:10px}
+    .post h4{margin:0 0 6px 0}
+    .post p{margin:0;color:var(--muted)}
+
+    /* gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .gallery .thumb{background:linear-gradient(180deg,#081126, #06101a);height:90px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700}
+
+    /* footer */
+    footer.sitefoot{margin-top:26px;text-align:center;color:var(--muted)}
+
+    /* responsive */
+    @media (max-width:980px){.grid{grid-template-columns:1fr}} 
+    @media (max-width:640px){.projects{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}
+      .avatar{width:96px;height:96px}.title h1{font-size:1.2rem}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- Header / Hero -->
+    <header class="hero" role="banner">
+      <div class="avatar" id="avatar">
+        <!-- inline futuristic SVG avatar placeholder -->
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1">
+              <stop offset="0" stop-color="#00f0ff" stop-opacity="0.9"/>
+              <stop offset="1" stop-color="#6c63ff" stop-opacity="0.95"/>
+            </linearGradient>
+          </defs>
+          <rect rx="20" width="200" height="200" fill="#071426"/>
+          <g transform="translate(40,36)">
+            <circle cx="60" cy="40" r="30" fill="url(#g)" opacity="0.15"/>
+            <circle cx="60" cy="40" r="28" fill="#0b1220" stroke="url(#g)" stroke-width="2"/>
+            <rect x="30" y="82" width="60" height="6" rx="3" fill="url(#g)" opacity="0.7"/>
+            <rect x="18" y="96" width="84" height="6" rx="3" fill="#0b1220"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="hero-content">
+        <div class="title">
+          <h1 id="name">Eng. Tawfiq Ahmed</h1>
+          <div class="tag">Mechatronics Engineer</div>
+        </div>
+        <div class="subtitle" id="subtitle">Designing intelligent machines that bridge mechanics, electronics & software.</div>
+      </div>
+
+      <div class="actions">
+        <div class="lang-switch" role="navigation" aria-label="Language switch">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ar">AR</button>
+          <button class="lang-btn" data-lang="tr">TR</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid">
+
+      <!-- main content -->
+      <main>
+        <!-- About -->
+        <section class="about" id="about">
+          <h2 class="section-title" data-key="about_title">About Me</h2>
+          <p id="about-text">I am Eng. Tawfiq Ahmed, a passionate Mechatronics Engineer with a deep interest in robotics, control systems, and intelligent mechanical design. I specialize in integrating mechanical structures with embedded systems to create automated and efficient machines. My background includes experience in CAD/CAM, MATLAB simulations, and programming microcontrollers such as Arduino and STM32. I enjoy solving complex technical challenges and turning innovative ideas into working prototypes that bridge the gap between electronics and mechanics.</p>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+          <h2 class="section-title" data-key="projects_title">Projects</h2>
+          <div class="projects" id="projects-list">
+            <!-- Project 1 -->
+            <article class="card project" data-key-prefix="proj1">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400'><rect width='100%' height='100%' fill='%23071022'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='22' fill='%236c63ff' font-family='Arial'>Line-Follower Robot (placeholder)</text></svg>" alt="Line follower">
+              <h3 data-key="proj1_title">Line-Follower Robot</h3>
+              <p data-key="proj1_desc">An autonomous line-following robot using IR sensors and PID control for precise path tracking.</p>
+              <div class="links"><a class="btn" href="#">View</a><a class="btn" href="#">Code</a></div>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="card project" data-key-prefix="proj2">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400'><rect width='100%' height='100%' fill='%23071022'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='22' fill='%2300f0ff' font-family='Arial'>Robotic Arm (placeholder)</text></svg>" alt="Robotic arm">
+              <h3 data-key="proj2_title">Robotic Manipulator</h3>
+              <p data-key="proj2_desc">Design and control of a 6-DOF manipulator with trajectory planning and MATLAB simulation.</p>
+              <div class="links"><a class="btn" href="#">View</a><a class="btn" href="#">Code</a></div>
+            </article>
+
+            <!-- Project 3 -->
+            <article class="card project" data-key-prefix="proj3">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400'><rect width='100%' height='100%' fill='%23071022'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='22' fill='%23ffd166' font-family='Arial'>Industrial IoT (placeholder)</text></svg>" alt="IoT">
+              <h3 data-key="proj3_title">Industrial IoT Monitoring</h3>
+              <p data-key="proj3_desc">IoT-based system for real-time industrial monitoring and predictive maintenance analytics.</p>
+              <div class="links"><a class="btn" href="#">View</a><a class="btn" href="#">Code</a></div>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- Articles -->
+        <section id="articles" style="margin-top:18px">
+          <h2 class="section-title" data-key="articles_title">Articles</h2>
+          <div class="articles">
+            <div class="post">
+              <h4 data-key="art1_title">Designing Robust PID Controllers</h4>
+              <p data-key="art1_desc">A practical overview on tuning PID for mobile robots and industrial actuators with MATLAB examples.</p>
+            </div>
+            <div class="post">
+              <h4 data-key="art2_title">From CAD to Reality: Rapid Prototyping</h4>
+              <p data-key="art2_desc">How to move from SolidWorks designs to working prototypes using 3D printing and CNC workflows.</p>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- sidebar -->
+      <aside>
+        <section>
+          <h2 class="section-title" data-key="skills_title">Skills</h2>
+          <div class="skills" id="skills-list">
+            <div class="skill"><strong>Mechanical CAD</strong><small>SolidWorks · AutoCAD · Fusion360</small></div>
+            <div class="skill"><strong>Control & Simulation</strong><small>MATLAB · Simulink · LabVIEW</small></div>
+            <div class="skill"><strong>Embedded Systems</strong><small>Arduino · STM32 · ESP32</small></div>
+            <div class="skill"><strong>Programming</strong><small>C · C++ · Python</small></div>
+            <div class="skill"><strong>Industrial Automation</strong><small>PLC · HMI · SCADA</small></div>
+            <div class="skill"><strong>CAM & CNC</strong><small>G-code · Machining workflows</small></div>
+          </div>
+        </section>
+
+        <section style="margin-top:18px">
+          <h2 class="section-title" data-key="gallery_title">Gallery</h2>
+          <div class="gallery" id="gallery">
+            <div class="thumb">Image 1</div>
+            <div class="thumb">Image 2</div>
+            <div class="thumb">Image 3</div>
+            <div class="thumb">Image 4</div>
+            <div class="thumb">Image 5</div>
+            <div class="thumb">Image 6</div>
+          </div>
+        </section>
+
+        <section style="margin-top:18px">
+          <h2 class="section-title" data-key="contact_title">Contact</h2>
+          <div class="contact-list">
+            <div class="chip">📧 <a href="mailto:eng.tawfiq@example.com">eng.tawfiq@example.com</a></div>
+            <div class="chip">🔗 <a href="https://github.com/eghost-svg" target="_blank">github.com/eghost-svg</a></div>
+            <div class="chip">🔗 <a href="https://linkedin.com/in/tawfiq-ahmed" target="_blank">linkedin.com/in/tawfiq-ahmed</a></div>
+          </div>
+        </section>
+
+      </aside>
+    </div>
+
+    <footer class="sitefoot">© <span id="year">2025</span> Eng. Tawfiq Ahmed — Mechatronics Portfolio</footer>
+  </div>
+
+  <script>
+    // --- Translations object ---
+    const translations = {
+      en: {
+        about_title: 'About Me',
+        projects_title: 'Projects',
+        articles_title: 'Articles',
+        skills_title: 'Skills',
+        gallery_title: 'Gallery',
+        contact_title: 'Contact',
+        about_text: `I am Eng. Tawfiq Ahmed, a passionate Mechatronics Engineer with a deep interest in robotics, control systems, and intelligent mechanical design. I specialize in integrating mechanical structures with embedded systems to create automated and efficient machines. My background includes experience in CAD/CAM, MATLAB simulations, and programming microcontrollers such as Arduino and STM32. I enjoy solving complex technical challenges and turning innovative ideas into working prototypes that bridge the gap between electronics and mechanics.`,
+        proj1_title: 'Line-Follower Robot',
+        proj1_desc: 'An autonomous line-following robot using IR sensors and PID control for precise path tracking.',
+        proj2_title: 'Robotic Manipulator',
+        proj2_desc: 'Design and control of a 6-DOF manipulator with trajectory planning and MATLAB simulation.',
+        proj3_title: 'Industrial IoT Monitoring',
+        proj3_desc: 'IoT-based system for real-time industrial monitoring and predictive maintenance analytics.',
+        art1_title: 'Designing Robust PID Controllers',
+        art1_desc: 'A practical overview on tuning PID for mobile robots and industrial actuators with MATLAB examples.',
+        art2_title: 'From CAD to Reality: Rapid Prototyping',
+        art2_desc: 'How to move from SolidWorks designs to working prototypes using 3D printing and CNC workflows.'
+      },
+      ar: {
+        about_title: 'من أنا',
+        projects_title: 'المشاريع',
+        articles_title: 'المقالات',
+        skills_title: 'المهارات',
+        gallery_title: 'المعرض',
+        contact_title: 'تواصل',
+        about_text: `أنا المهندس توفيق أحمد، مهندس ميكاترونكس متحمس للروبوتات وأنظمة التحكم والتصميم الميكانيكي الذكي. أتخصص في دمج الهياكل الميكانيكية مع الأنظمة المدمجة لإنشاء آلات مؤتمتة وفعّالة. تشمل خبرتي CAD/CAM ومحاكاة MATLAB وبرمجة المتحكمات الدقيقة مثل Arduino وSTM32. أستمتع بحل التحديات التقنية المعقدة وتحويل الأفكار المبتكرة إلى نماذج أولية تعمل وتربط بين الإلكترونيات والميكانيكا.`,
+        proj1_title: 'روبوت تتبع المسار',
+        proj1_desc: 'روبوت ذاتي القيادة يستخدم حساسات IR وتحكم PID لتتبع المسار بدقة.',
+        proj2_title: 'ذراع روبوتية',
+        proj2_desc: 'تصميم وتحكم ذراع ميكانيكية بست درجات حرية مع تخطيط مسار ومحاكاة MATLAB.',
+        proj3_title: 'مراقبة صناعية عبر IoT',
+        proj3_desc: 'نظام يعتمد على إنترنت الأشياء لمراقبة الأداء الصناعي وتحليلات الصيانة التنبؤية.',
+        art1_title: 'تصميم متحكمات PID قوية',
+        art1_desc: 'نظرة عملية على ضبط PID للروبوتات والمحركات الصناعية مع أمثلة في MATLAB.',
+        art2_title: 'من التصميم إلى الواقع: النمذجة السريعة',
+        art2_desc: 'كيفية الانتقال من تصاميم SolidWorks إلى نماذج أولية باستخدام الطباعة ثلاثية الأبعاد وCNC.'
+      },
+      tr: {
+        about_title: 'Hakkımda',
+        projects_title: 'Projeler',
+        articles_title: 'Makaleler',
+        skills_title: 'Beceriler',
+        gallery_title: 'Galeri',
+        contact_title: 'İletişim',
+        about_text: `Ben Müh. Tawfiq Ahmed, robotik, kontrol sistemleri ve akıllı mekanik tasarım konularında tutkulu bir Mekatronik Mühendisiyim. Mekanik yapıları gömülü sistemlerle entegre ederek otomatik ve verimli makineler oluşturma konusunda uzmanım. Deneyimim CAD/CAM, MATLAB simülasyonları ve Arduino ile STM32 gibi mikrodenetleyici programlamayı içerir. Karmaşık teknik zorlukları çözmekten ve yenilikçi fikirleri çalışan prototiplere dönüştürmekten keyif alıyorum.`,
+        proj1_title: 'Hat İzleyen Robot',
+        proj1_desc: 'IR sensörler ve hassas yol takibi için PID kontrolü kullanan otonom bir hat izleme robotu.',
+        proj2_title: 'Robotik Kol',
+        proj2_desc: 'MATLAB simülasyonu ve yol planlaması ile 6 serbestlik dereceli bir manipülatörün tasarımı ve kontrolü.',
+        proj3_title: 'Endüstriyel IoT İzleme',
+        proj3_desc: 'Gerçek zamanlı endüstriyel izleme ve öngörücü bakım analitiği için IoT tabanlı sistem.'
+      }
+    };
+
+    // default language
+    let currentLang = 'en';
+
+    // apply translations
+    function applyLang(lang){
+      currentLang = lang;
+      // toggle active btn
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang===lang));
+
+      const dict = translations[lang] || translations['en'];
+
+      // section titles and about
+      document.querySelector('[data-key="about_title"]').textContent = dict.about_title;
+      document.querySelector('[data-key="projects_title"]').textContent = dict.projects_title;
+      document.querySelector('[data-key="articles_title"]').textContent = dict.articles_title;
+      document.querySelector('[data-key="skills_title"]').textContent = dict.skills_title;
+      document.querySelector('[data-key="gallery_title"]').textContent = dict.gallery_title;
+      document.querySelector('[data-key="contact_title"]').textContent = dict.contact_title;
+
+      document.getElementById('about-text').textContent = dict.about_text;
+
+      // projects
+      document.querySelectorAll('[data-key^="proj"]').forEach(el => {
+        const key = el.dataset.key;
+        if(key && dict[key]) el.textContent = dict[key];
+      });
+
+      // use specific keys for project elements
+      document.querySelector('[data-key="proj1_title"]').textContent = dict.proj1_title;
+      document.querySelector('[data-key="proj1_desc"]').textContent = dict.proj1_desc;
+      document.querySelector('[data-key="proj2_title"]').textContent = dict.proj2_title;
+      document.querySelector('[data-key="proj2_desc"]').textContent = dict.proj2_desc;
+      document.querySelector('[data-key="proj3_title"]').textContent = dict.proj3_title;
+      document.querySelector('[data-key="proj3_desc"]').textContent = dict.proj3_desc;
+
+      // articles
+      document.querySelector('[data-key="art1_title"]').textContent = dict.art1_title;
+      document.querySelector('[data-key="art1_desc"]').textContent = dict.art1_desc;
+      document.querySelector('[data-key="art2_title"]').textContent = dict.art2_title;
+      document.querySelector('[data-key="art2_desc"]').textContent = dict.art2_desc;
+
+      // direction and lang attributes
+      if(lang==='ar'){
+        document.documentElement.lang = 'ar';
+        document.documentElement.dir = 'rtl';
+      } else if(lang==='tr'){
+        document.documentElement.lang = 'tr';
+        document.documentElement.dir = 'ltr';
+      } else{
+        document.documentElement.lang = 'en';
+        document.documentElement.dir = 'ltr';
+      }
+    }
+
+    // init language buttons
+    document.querySelectorAll('.lang-btn').forEach(b=>{
+      b.addEventListener('click', ()=> applyLang(b.dataset.lang));
+    });
+
+    // set default (english)
+    applyLang(currentLang);
+
+    // small utilities: update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // accessibility: enable keyboard language switch (Alt+1/2/3)
+    window.addEventListener('keydown', e => {
+      if(e.altKey && e.key==='1') applyLang('en');
+      if(e.altKey && e.key==='2') applyLang('ar');
+      if(e.altKey && e.key==='3') applyLang('tr');
+    });
+
+  </script>
+</body>
+</html>
